@@ -30,54 +30,7 @@ solution and the way how you got to it. Please send it together with the script.
 
 The code written for this task is quite flexible and we can parametrize it for
 execution time or for result quality. The overall algorithm (pseudo code) is given
-below.
-
-Function: getMarkedTable( [in] rows ) returns html table (of match rows)
-  for each row r
-    company_name = r[“Company”];
-    for each keyword k in company_name with length > alpha
-      if(k exists in hash)
-        increment hash[k].count
-        insert (hash[k].company_indices_of_rows, r.index)
-        optimized_hash[k] = hash[k];
-      else
-        hash[k] = new keyword( count = 1, company_index = r.index );
-      end if
-  end for
-  marked_rows = new hash();
-  for each keyword k in optimized_hash
-    if(optimized_hash[k].count < beta)
-      for any pair (a, b) in optimized_hash[k].company_indices_of_rows
-        if(similarity(rows[a][“Company”], rows[b][“Company”]) > 80%)
-          if(match_addresses(rows[a], rows[b]) == true)
-            marked_rows[a] = b;
-            marked_rows[b] = a;
-          end if
-        else if (similarity(rows[a][“Company”], rows[b][“Company”]) > 50%)
-          if(user prompt is enable)
-             Ask user if rows[a][“Company”] and rows[b][“Company”] match?
-             If given yes
-               if(match_addresses(rows[a], rows[b]) == true)
-                  marked_rows[a] = b;
-                  marked_rows[b] = a;
-               end if
-            end if
-          end if
-        end if
-      end for
-    end if
-  end for
-  html_table = new table;
-  for each pair (current_row_index => match_row_index) in marked_rows
-    if( strtolower(rows[current_row_index][“CustomerNo”]) starts with “abo” and strtolower(rows[matched_row_index][“CustomerNo”]) starts with “ge”)
-      color = GREY
-    else if ( strtolower(rows[current_row_index][“CustomerNo”]) starts with “ge”)
-      color = YELLOW
-    end if
-    html_table.insert(rows[current_row_index] in proper formatting and color)
-  end for
-  return html_table;
-End Function
+in the Solution.pdf file.
 
 ## The Algorithm
 
